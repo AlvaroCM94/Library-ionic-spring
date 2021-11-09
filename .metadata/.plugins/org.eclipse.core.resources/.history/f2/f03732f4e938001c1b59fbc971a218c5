@@ -1,0 +1,48 @@
+package com.alvaro.libreria.entity.services;
+
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alvaro.libreria.entity.models.Autor;
+import com.alvaro.libreria.entity.dao.AutorDAO;
+
+public class IAutorServiceImpl implements IAutorService{
+	
+	@Autowired
+	private AutorDAO autorDao;
+
+	@Override
+	public Optional<Autor> getOne(int id){
+		return autorDao.findById(id);
+	}
+
+	@Override
+	public List<Autor> getAll(){
+		return (List<Autor>) autorDao.findAll();
+	}
+
+	@Override
+	public void add(Autor comunidad){
+		autorDao.save(comunidad);
+		
+	}
+
+	@Override
+	public void update(int id, Autor autor){
+		Optional<Autor> c = autorDao.findById(id);
+		
+		if (c.isPresent()) {
+			autor.setIdAutor(id);
+			autorDao.save(autor);
+		}
+	}
+
+	@Override
+	public void delete(int id){
+		autorDao.deleteById(id);
+		
+	}
+
+}

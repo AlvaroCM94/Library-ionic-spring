@@ -1,0 +1,5 @@
+package com.alvaro.libreria.entity.dao;
+
+public interface LibroDAO {
+
+}

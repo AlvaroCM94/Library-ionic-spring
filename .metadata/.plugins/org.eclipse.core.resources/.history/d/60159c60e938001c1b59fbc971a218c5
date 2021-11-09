@@ -1,0 +1,14 @@
+package com.alvaro.libreria.entity.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.alvaro.libreria.entity.models.Libro;
+
+public interface ILibroService {
+	Optional<Libro> getOne(int id);
+	List<Libro> getAll();
+	void add(Libro libro);
+	void update(Libro libro, int id);
+	void delete(int id);
+}

@@ -1,0 +1,15 @@
+package com.alvaro.libreria.entity.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.alvaro.libreria.entity.models.Autor;
+
+public interface IAutorService {
+	Optional<Autor> getOne(int id);
+	List<Autor> getAll();
+	void add(Autor autor);
+	void update(Autor autor, int id);
+	void delete(int id);
+	
+}

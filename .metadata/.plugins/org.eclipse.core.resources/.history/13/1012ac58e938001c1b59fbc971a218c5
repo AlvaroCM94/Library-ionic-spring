@@ -1,0 +1,14 @@
+package com.alvaro.libreria.entity.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.alvaro.libreria.entity.models.Usuario;
+
+public interface IUsuarioService {
+	Optional<Usuario> getOne(int id);
+	List<Usuario> getAll();
+	void add(Usuario usuario);
+	void update(Usuario usuario, int id);
+	void delete(int id);
+}

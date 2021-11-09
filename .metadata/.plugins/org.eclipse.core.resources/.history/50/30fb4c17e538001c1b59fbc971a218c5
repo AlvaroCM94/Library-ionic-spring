@@ -1,0 +1,7 @@
+package com.alvaro.libreria.entity.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface AutorDAO extends CrudRepository<Comunidad, Integer>{
+
+}

@@ -1,0 +1,5 @@
+package com.alvaro.libreria.entity.services;
+
+public interface ILibroService {
+
+}
