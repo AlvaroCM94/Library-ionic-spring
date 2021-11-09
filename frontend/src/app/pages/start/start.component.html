@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="boton">
+    <button type="button" class="btn btn-light">Buscar</button>
+  </div>
+
+  <div class="row" *ngFor="let book of books" style="border-block-start: double;">
+
+    <div class="col-4">
+        <img src="assets/images/libroPH.jpg" alt="" width="120" height="150">
+    </div>
+
+    <div class="col-8">
+        <p style="margin-bottom: 0%;">Titulo: {{ book.name }}</p>
+        <p style="margin-bottom: 0%;">Autor: {{ book.author }}</p>
+        <!-- <p>{{ book.synopsis }}</p> -->
+        <textarea rows="3" readonly>{{ book.synopsis }}</textarea> 
+    </div>
+    
+  </div>
+
+</div>
