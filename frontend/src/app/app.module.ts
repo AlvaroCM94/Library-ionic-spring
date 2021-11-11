@@ -12,6 +12,9 @@ import { MenuComponent } from './menu/menu.component';
 import { StartComponent } from './pages/start/start.component';
 import { BookListComponent } from './pages/employee/book-list/book-list.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
+import { LoginComponent } from './pages/login/login.component';
+import { EncrDecrService } from './services/EncrDecrService';
+import { PruebaComponent } from './prueba/prueba.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { EmployeeComponent } from './pages/employee/employee.component';
     MenuComponent,
     StartComponent,
     EmployeeComponent,
-    BookListComponent
+    BookListComponent,
+    LoginComponent,
+    PruebaComponent
   ],
   entryComponents: [],
   imports: [
@@ -31,7 +36,8 @@ import { EmployeeComponent } from './pages/employee/employee.component';
   ],
   providers: [{ 
     provide: RouteReuseStrategy,
-    useClass: IonicRouteStrategy 
+    useClass: IonicRouteStrategy,
+    //EncrDecrService
   }],
   bootstrap: [
     AppComponent

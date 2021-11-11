@@ -1,0 +1,9 @@
+.td{
+    height: 2.5em; /* adjust to taste */
+    overflow: hidden
+}
+
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}

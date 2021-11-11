@@ -29,7 +29,7 @@
 
           <thead>
             <tr>
-              <th>Config</th>
+              <th>EDIT</th>
               <th>Nombre</th>
               <th>Autor</th>
               <th>Genero</th>
@@ -37,6 +37,7 @@
               <th>Stock</th>
               <th>Imagen</th>
               <th>FKAutor</th>
+              <th>DEL</th>
             </tr>
           </thead> 
 
@@ -44,9 +45,10 @@
             <tr *ngFor="let book of books; let i = index">
               
               <td>
-                <button class="btn btn-warning" style="margin-right: 5px;" data-toggle="modal" [attr.data-target]="'#modal' + i">Editar</button>
+                <img data-toggle="modal" [attr.data-target]="'#modal' + i" height="25px" width="25px" src="assets/icon/update.png" alt="update icon">
+                
 
-                <div class="modal" [attr.id]="'modal' + i">
+                <div class="modal" [attr.id]="'modal' + i" data-backdrop="false"> 
                   <div class="modal-dialog">
                     <div class="modal-content">
                 
@@ -81,7 +83,7 @@
           
                           <div class="form-group">
                             <label for="synopsisA">Sinopsis:</label>
-                            <input type="text" class="form-control" id="synopsisA" name="synopsisA" value="{{ book.synopsis }}" #synopsisA required>
+                            <textarea class="form-control" rows="3" id="synopsisA" name="synopsisA" value="{{ book.synopsis }}" #synopsisA required></textarea>
                           </div>
 
                           <div class="form-group">
@@ -100,8 +102,7 @@
                           </div>
           
                           <button class="btn btn-warning" (click)="updateLibro(book, nameA.value, authorA.value, genreA.value, 
-                            synopsisA.value, stockA.value, imageA.value, fkA.value)">
-                          Actuaizar</button>
+                            synopsisA.value, stockA.value, imageA.value, fkA.value)">Actuaizar</button>
           
                         </form>
                       </div>
@@ -110,7 +111,6 @@
                   </div>
                 </div>
 
-                <button class="btn btn-danger" (click)="deleteLibro(book.id)">Borrar</button>
               </td>
 
               <td>{{ book.name }}</td>
@@ -120,6 +120,8 @@
               <td>{{ book.stock }}</td>
               <td>{{ book.image }}</td>
               <td>{{ book.fk_author }}</td>
+
+              <td><img (click)="deleteLibro(book.id)" height="25px" width="25px" src="assets/icon/delete.png" alt="delete icon"></td>
 
             </tr>
           </tbody>
@@ -132,6 +134,7 @@
     <!-- ******************************************************tab**************************************************************** -->
 
     <div id="autor" class="container tab-pane fade"><br>
+        
 
     </div>
 
