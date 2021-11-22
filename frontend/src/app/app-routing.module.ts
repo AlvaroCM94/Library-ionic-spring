@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { BookListComponent } from './pages/employee/book-list/book-list.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SearchComponent } from './pages/search/search.component';
 import { StartComponent } from './pages/start/start.component';
 
 const routes: Routes = [
@@ -12,8 +13,10 @@ const routes: Routes = [
   // },
   { path: '',  component: StartComponent, pathMatch: 'full' },
   { path: 'EmpleadoAñadirLibro',  component: BookListComponent, pathMatch: 'full' },
-  { path: 'Employee',  component: EmployeeComponent, pathMatch: 'full' },
+  { path: 'Employee',  component: EmployeeComponent/*, pathMatch: 'full' */},
   { path: 'Login',  component: LoginComponent, pathMatch: 'full' },
+  { path: 'Start',  component: StartComponent, pathMatch: 'full' },
+  { path: 'Search',  component: SearchComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

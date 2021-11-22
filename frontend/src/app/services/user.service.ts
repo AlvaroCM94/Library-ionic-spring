@@ -28,11 +28,21 @@ export class UserService {
         return of(result as T);
       };
     }
+
+    getUserByName(){
+      
+    }
+
+    createUser(user: User){
+      let bodyEncoded = new URLSearchParams();
+      bodyEncoded.append("name", user.name);
+      bodyEncoded.append("email", user.email);
+      bodyEncoded.append("password", user.password);
+      bodyEncoded.append("rol", user.rol);
+
+      const body = bodyEncoded.toString();
+
+      return this.httpClient.post<User>(this.endpoint, body, httpOptionsUsingUrlEncoded);
+    }
     
-    /*getComunidad(): Observable<Comunidad[]>{
-      return this.httpClient.get<Comunidad[]>(this.endpoint).pipe(
-        tap(_=> console.log("Comunidad retrieved")),
-        catchError(this.handleError<Comunidad[]>("Get Comunidad", []))
-      );
-    }*/
   }

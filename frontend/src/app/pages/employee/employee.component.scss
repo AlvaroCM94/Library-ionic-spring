@@ -1,9 +1,16 @@
-.td{
-    height: 2.5em; /* adjust to taste */
-    overflow: hidden
-}
+// .td{
+//     height: 2.5em; /* adjust to taste */
+//     overflow: hidden
+// }
 
-.modal-backdrop {
-    /* bug fix - no overlay */    
-    display: none;    
+// .modal-backdrop {
+//     /* bug fix - no overlay */    
+//     //display: none !important;
+//     z-index: -1 !important;
+//     width: 0vw !important;
+//     height: 0vh !important; 
+// }
+
+.card-body{
+    background-color: #cacdbc;
 }

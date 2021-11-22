@@ -1,9 +1,19 @@
 <div class="container">
   <div class="boton">
-    <button type="button" class="btn btn-light">Buscar</button>
+
+    
+    
+    <select (change)="handlePageSizeChange($event)">
+      <option *ngFor="let size of pageSizes" [ngValue]="size">
+        {{ size }}
+      </option>
+    </select>
+
+    <button type="button" class="btn btn-light" routerLink="/Search" >Buscar</button>
+
   </div>
 
-  <div *ngFor="let book of books">
+  <div *ngFor="let book of books | paginate : { itemsPerPage: pageSize, currentPage: page, totalItems: count }; let i = index">
     <div class="row" *ngIf="book.stock > 0" style="border-block-start: double;">
 
       <div class="col-4">
@@ -19,5 +29,7 @@
       
     </div>
   </div>
+
+  <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" responsive="true" (pageChange)="handlePageChange($event)" ></pagination-controls>
 
 </div>

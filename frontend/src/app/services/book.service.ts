@@ -69,4 +69,8 @@ export class BookService {
     deleteLibro(id: number): Observable<Book>{
       return this.httpClient.delete<Book>(this.endpoint + "/" + id);
     }
+
+    findByName(name: string): Observable<Book>{
+      return this.httpClient.get<Book>(this.endpoint + "/byname/" + name);
+    }
   }

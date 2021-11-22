@@ -11,20 +11,31 @@ export class EmployeeComponent implements OnInit {
 
   public books: Array<Book> = [];
 
-  constructor(private bookService: BookService){}
+  constructor(private bookService: BookService) { }
 
-  ngOnInit(){
+  ngOnInit() {
+    //console.log("hola holita")
     this.loadInfo();
   }
 
-  loadInfo(){
+  loadInfo() {
     this.bookService.getBooks().subscribe((response) => {
+      //console.log("load libro antes")
       this.books = response;
+      //console.log("load libro despues")
     })
   }
 
-  updateLibro(book: Book, name: string, author: string, genre: string, synopsis: string, stock: number, image: string, fk: string){
-    const auxFk = Number(fk);
+// rekk(e){
+//   e.preventDefault();
+//   console.log("rekk")
+// }
+
+  kk(book: Book, name: string, author: string, genre: string, synopsis: string, stock: number, image: string, fk: string, e) {
+    //const 22auxFk = Number(fk);
+    //console.log("Llegó aupdate libro")
+    
+    e.preventDefault();
     const newBook: Book = {
       id: book.id,
       name: name,
@@ -35,15 +46,44 @@ export class EmployeeComponent implements OnInit {
       image: image,
       fk_author: Number(fk)
     }
-    
+
+    console.log(newBook);
+
     this.bookService.updateLibro(newBook.id, newBook).subscribe(() => {
+      // console.log("update libro antes")
       this.loadInfo();
+      // console.log("update libro despues")
     });
-    
+
   }
 
-  deleteLibro(id: number){
-    this.bookService.deleteLibro(id).subscribe(() =>{
+  updateLibro(book: Book, name: string, author: string, genre: string, synopsis: string, stock: number, image: string, fk: string) {
+    //const 22auxFk = Number(fk);
+    //console.log("Llegó update libro")
+    //return;
+    const newBook: Book = {
+      id: book.id,
+      name: name,
+      author: author,
+      genre: genre,
+      synopsis: synopsis,
+      stock: stock,
+      image: image,
+      fk_author: Number(fk)
+    }
+
+    console.log(newBook);
+
+    this.bookService.updateLibro(newBook.id, newBook).subscribe(() => {
+      //console.log("update libro antes")
+      // this.loadInfo();
+      //console.log("update libro despues")
+    });
+
+  }
+
+  deleteLibro(id: number) {
+    this.bookService.deleteLibro(id).subscribe(() => {
       this.loadInfo();
     })
   }

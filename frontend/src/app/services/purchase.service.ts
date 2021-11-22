@@ -29,10 +29,5 @@ export class PurchaseService {
       };
     }
     
-    // getComunidad(): Observable<Comunidad[]>{
-    //   return this.httpClient.get<Comunidad[]>(this.endpoint).pipe(
-    //     tap(_=> console.log("Comunidad retrieved")),
-    //     catchError(this.handleError<Comunidad[]>("Get Comunidad", []))
-    //   );
-    // }
+    
   }

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -14,7 +15,8 @@ import { BookListComponent } from './pages/employee/book-list/book-list.componen
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EncrDecrService } from './services/EncrDecrService';
-import { PruebaComponent } from './prueba/prueba.component';
+import { SearchComponent } from './pages/search/search.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { PruebaComponent } from './prueba/prueba.component';
     EmployeeComponent,
     BookListComponent,
     LoginComponent,
-    PruebaComponent
+    SearchComponent
   ],
   entryComponents: [],
   imports: [
@@ -32,7 +34,8 @@ import { PruebaComponent } from './prueba/prueba.component';
     CommonModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [{ 
     provide: RouteReuseStrategy,
