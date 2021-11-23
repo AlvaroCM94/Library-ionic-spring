@@ -36,6 +36,11 @@ export class BookService {
       );
     }
 
+    getAll(params): Observable<any> {
+      console.log("parametros: " + params);
+      return this.httpClient.get(this.endpoint, { params });
+    }
+
     createLibro(book: Book){
       let bodyEncoded = new URLSearchParams();
       bodyEncoded.append("name", book.name);

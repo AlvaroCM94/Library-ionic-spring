@@ -26,7 +26,8 @@ import { SearchComponent } from './pages/search/search.component';
     EmployeeComponent,
     BookListComponent,
     LoginComponent,
-    SearchComponent
+    SearchComponent,
+    // JwPaginationComponent
   ],
   entryComponents: [],
   imports: [
@@ -35,7 +36,8 @@ import { SearchComponent } from './pages/search/search.component';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    
   ],
   providers: [{ 
     provide: RouteReuseStrategy,

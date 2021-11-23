@@ -1,10 +1,10 @@
-<div class="container">
+<!-- <div class="container">
   <div class="boton">
 
     
     
     <select (change)="handlePageSizeChange($event)">
-      <option *ngFor="let size of pageSizes" [ngValue]="size">
+      <option *ngFor="let size of pageSizes" value="size">
         {{ size }}
       </option>
     </select>
@@ -23,13 +23,51 @@
       <div class="col-8">
           <p style="margin-bottom: 0%;">Titulo: {{ book.name }}</p>
           <p style="margin-bottom: 0%;">Autor: {{ book.author }}</p>
-          <!-- <p>{{ book.synopsis }}</p> -->
           <textarea rows="3" readonly>{{ book.synopsis }}</textarea> 
       </div>
       
     </div>
   </div>
 
-  <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" responsive="true" (pageChange)="handlePageChange($event)" ></pagination-controls>
+  <div style="text-align: center;">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" (pageChange)="handlePageChange($event)" ></pagination-controls>
+  </div>
+
+</div> -->
+
+<div class="container">
+  <div class="boton">
+
+    
+    
+    <select (change)="pageSizeChangePageSize($event)">
+      <option *ngFor="let size of pageSizes" value="size">
+        {{ size }}
+      </option>
+    </select>
+
+    <button type="button" class="btn btn-light" routerLink="/Search" >Buscar</button>
+
+  </div>
+
+  <div *ngFor="let book of books | paginate : { itemsPerPage: pageSize, currentPage: p}; let i = index">
+    <div class="row" *ngIf="book.stock > 0" style="border-block-start: double;">
+
+      <div class="col-4">
+          <img src="assets/images/libroPH.jpg" alt="" width="120" height="150">
+      </div>
+
+      <div class="col-8">
+          <p style="margin-bottom: 0%;">Titulo: {{ book.name }}</p>
+          <p style="margin-bottom: 0%;">Autor: {{ book.author }}</p>
+          <textarea rows="3" readonly>{{ book.synopsis }}</textarea> 
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <pagination-controls previousLabel="Ant" nextLabel="Sig" (pageChange)="p = $event"></pagination-controls>
+  </div>
 
 </div>

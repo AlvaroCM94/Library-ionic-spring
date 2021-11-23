@@ -16,9 +16,9 @@
 
     <div id="libro" class="tab-pane active"><br>
 
-      <button class="btn btn-primary" style="margin-right: 5px;" routerLink="/EmpleadoAñadirLibro">Añadir</button>
+      <button class="btn btn-primary" style="margin-bottom: 5px;" routerLink="/EmpleadoAñadirLibro">Añadir</button>
 
-      <div *ngFor="let book of books; let i = index">
+      <div *ngFor="let book of books | paginate : { itemsPerPage: pageSize, currentPage: p}; let i = index">
 
         <div id="accordion">
 
@@ -141,138 +141,6 @@
                   </div>
                 </div>
 
-                <!-- <table class="table">
-
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Autor</th>
-                      <th>Genero</th>
-                    </tr>
-                  </thead> 
-        
-                  <tbody>
-                    <tr>
-                      
-                      <td>{{ book.name }}</td>
-                      <td>{{ book.author }}</td>
-                      <td>{{ book.genre }}</td>
-        
-                    </tr>
-                  </tbody>
-
-                  <thead>
-                    <tr>
-                      <th>Sinopsis</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>{{ book.synopsis }}</td>
-                    </tr>
-                  </tbody>
-
-                  <thead>
-                    <tr>
-                      <th>Stock</th>
-                      <th>Imagen</th>
-                      <th>FKAutor</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>{{ book.stock }}</td>
-                      <td>{{ book.image }}</td>
-                      <td>{{ book.fk_author }}</td>
-                    </tr>
-                  </tbody>
-
-                  <thead>
-                    <tr>
-                      <th>Editar</th>
-                      <th>Borrar</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <td>
-                        <img data-toggle="modal" [attr.data-target]="'#modal' + i" height="25px" width="25px" src="assets/icon/update.png" alt="update icon">////////
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#modal' + i">Update</button>
-                        
-        
-                        <div class="modal" [attr.id]="'modal' + i" data-bs-backdrop="false" style="margin-top: 61px;"> 
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                        
-                              <div class="modal-header">
-                                <h4 class="modal-title">Actualizar libro</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
-                              </div>
-                        
-                              <div class="modal-body">
-                                <form>
-                                  
-                                  <div class="form-group">
-                                    <label for="nameA">Nombre:</label>
-                                    <input type="text" class="form-control" id="nameA" name="nameA" value="{{ book.name }}" #nameA required>
-                                  </div>
-                  
-                                  <div class="form-group">
-                                    <label for="authorA">Autor:</label>
-                                    <input type="text" class="form-control" id="authorA" name="authorA" value="{{ book.author }}" #authorA required>
-                                  </div>
-        
-                                  <div class="form-group">
-                                    <label for="genreA">Genero:</label>
-                                    <select class="form-control" id="genreA" name="genreA" value="{{ book.genre }}" #genreA required>
-                                      <option value="Accion">Accion</option>
-                                      <option value="Ficcion">Ficcion</option>
-                                      <option value="Comedia">Comedia</option>
-                                      <option value="Terror">Terror</option>
-                                      <option value="Romance">Romance</option>
-                                    </select>
-                                  </div>
-                  
-                                  <div class="form-group">
-                                    <label for="synopsisA">Sinopsis:</label>
-                                    <textarea class="form-control" rows="3" id="synopsisA" name="synopsisA" value="{{ book.synopsis }}" #synopsisA required></textarea>
-                                  </div>
-        
-                                  <div class="form-group">
-                                    <label for="stockA">Stock:</label>
-                                    <input type="text" class="form-control" id="stockA" name="stockA" min="1" value="{{ book.stock }}" #stockA required>
-                                  </div>
-                  
-                                  <div class="form-group">
-                                    <label for="imageA">Imagen:</label>
-                                    <input type="text" class="form-control" id="imageA" name="imageA" value="{{ book.image }}" #imageA required>
-                                  </div>
-        
-                                  <div class="form-group">
-                                    <label for="fkA">Fk autor:</label>
-                                    <input type="text" class="form-control" id="fkA" name="fkA" value="{{ book.fk_author }}" #fkA required>
-                                  </div>
-                  
-                                  <button class="btn btn-warning" (click)="kk(book, nameA.value, authorA.value, genreA.value, 
-                                    synopsisA.value, stockA.value, imageA.value, fkA.value, $event)">Actualizar</button>
-                  
-                                </form>
-                              </div>
-                        
-                            </div>
-                          </div>
-                        </div>
-        
-                      </td>
-                      <td><img (click)="deleteLibro(book.id)" height="25px" width="25px" src="assets/icon/delete.png" alt="delete icon"></td>
-                    </tr>
-                  </tbody>
-        
-                </table> -->
-
               </div>
             </div>
   
@@ -282,114 +150,9 @@
 
       </div><!-- ngfor -->
 
-      
-
-      <!-- <div id="tablaLibro" class="table-responsive">
-        <table class="table">
-
-          <thead>
-            <tr>
-              <th>EDIT</th>
-              <th>Nombre</th>
-              <th>Autor</th>
-              <th>Genero</th>
-              <th>Sinopsis</th>
-              <th>Stock</th>
-              <th>Imagen</th>
-              <th>FKAutor</th>
-              <th>DEL</th>
-            </tr>
-          </thead> 
-
-          <tbody>
-            <tr *ngFor="let book of books; let i = index">
-              
-              <td>
-                <img data-toggle="modal" [attr.data-target]="'#modal' + i" height="25px" width="25px" src="assets/icon/update.png" alt="update icon">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#modal' + i">Update</button>
-                
-
-                <div class="modal" [attr.id]="'modal' + i" data-bs-backdrop="false" style="margin-top: 61px;"> 
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                
-                      <div class="modal-header">
-                        <h4 class="modal-title">Actualizar libro</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
-                      </div>
-                
-                      <div class="modal-body">
-                        <form>
-                          
-                          <div class="form-group">
-                            <label for="nameA">Nombre:</label>
-                            <input type="text" class="form-control" id="nameA" name="nameA" value="{{ book.name }}" #nameA required>
-                          </div>
-          
-                          <div class="form-group">
-                            <label for="authorA">Autor:</label>
-                            <input type="text" class="form-control" id="authorA" name="authorA" value="{{ book.author }}" #authorA required>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="genreA">Genero:</label>
-                            <select class="form-control" id="genreA" name="genreA" value="{{ book.genre }}" #genreA required>
-                              <option value="Accion">Accion</option>
-                              <option value="Ficcion">Ficcion</option>
-                              <option value="Comedia">Comedia</option>
-                              <option value="Terror">Terror</option>
-                              <option value="Romance">Romance</option>
-                            </select>
-                          </div>
-          
-                          <div class="form-group">
-                            <label for="synopsisA">Sinopsis:</label>
-                            <textarea class="form-control" rows="3" id="synopsisA" name="synopsisA" value="{{ book.synopsis }}" #synopsisA required></textarea>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="stockA">Stock:</label>
-                            <input type="text" class="form-control" id="stockA" name="stockA" min="1" value="{{ book.stock }}" #stockA required>
-                          </div>
-          
-                          <div class="form-group">
-                            <label for="imageA">Imagen:</label>
-                            <input type="text" class="form-control" id="imageA" name="imageA" value="{{ book.image }}" #imageA required>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="fkA">Fk autor:</label>
-                            <input type="text" class="form-control" id="fkA" name="fkA" value="{{ book.fk_author }}" #fkA required>
-                          </div>
-          
-                          <button class="btn btn-warning" (click)="kk(book, nameA.value, authorA.value, genreA.value, 
-                            synopsisA.value, stockA.value, imageA.value, fkA.value, $event)">Actualizar</button>
-          
-                        </form>
-                      </div>
-                
-                    </div>
-                  </div>
-                </div>
-
-              </td>
-
-              <td>{{ book.name }}</td>
-              <td>{{ book.author }}</td>
-              <td>{{ book.genre }}</td>
-              <td style="height: 25px;">{{ book.synopsis }}</td>
-              <td>{{ book.stock }}</td>
-              <td>{{ book.image }}</td>
-              <td>{{ book.fk_author }}</td>
-
-              <td><img (click)="deleteLibro(book.id)" height="25px" width="25px" src="assets/icon/delete.png" alt="delete icon"></td>
-
-            </tr>
-          </tbody>
-
-        </table>
-
-      </div> -->
+      <div class="d-flex justify-content-center">
+        <pagination-controls previousLabel="Ant" nextLabel="Sig" (pageChange)="p = $event"></pagination-controls>
+      </div>
 
     </div>
 

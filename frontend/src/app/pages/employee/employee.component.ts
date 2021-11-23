@@ -9,6 +9,8 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class EmployeeComponent implements OnInit {
 
+  pageSize = 10;
+
   public books: Array<Book> = [];
 
   constructor(private bookService: BookService) { }
@@ -26,12 +28,7 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
-// rekk(e){
-//   e.preventDefault();
-//   console.log("rekk")
-// }
-
-  kk(book: Book, name: string, author: string, genre: string, synopsis: string, stock: number, image: string, fk: string, e) {
+updateLibro(book: Book, name: string, author: string, genre: string, synopsis: string, stock: number, image: string, fk: string, e) {
     //const 22auxFk = Number(fk);
     //console.log("Llegó aupdate libro")
     
@@ -53,31 +50,6 @@ export class EmployeeComponent implements OnInit {
       // console.log("update libro antes")
       this.loadInfo();
       // console.log("update libro despues")
-    });
-
-  }
-
-  updateLibro(book: Book, name: string, author: string, genre: string, synopsis: string, stock: number, image: string, fk: string) {
-    //const 22auxFk = Number(fk);
-    //console.log("Llegó update libro")
-    //return;
-    const newBook: Book = {
-      id: book.id,
-      name: name,
-      author: author,
-      genre: genre,
-      synopsis: synopsis,
-      stock: stock,
-      image: image,
-      fk_author: Number(fk)
-    }
-
-    console.log(newBook);
-
-    this.bookService.updateLibro(newBook.id, newBook).subscribe(() => {
-      //console.log("update libro antes")
-      // this.loadInfo();
-      //console.log("update libro despues")
     });
 
   }
