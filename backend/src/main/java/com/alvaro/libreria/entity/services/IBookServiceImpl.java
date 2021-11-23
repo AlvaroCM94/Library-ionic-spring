@@ -47,4 +47,9 @@ public class IBookServiceImpl implements IBookService{
 		
 	}
 
+	@Override
+	public Book findByName(String name) {
+		return bookDao.findByName(name);
+	}
+
 }

@@ -42,6 +42,17 @@ public class BookController{
 
 		return null;
 	}
+	
+	@GetMapping("/book/byname/{name}")
+	Book findByName(@PathVariable("name") String name) {
+		Book l = bookService.findByName(name);
+
+		/*if(l.isPresent()) {
+			return l.get();
+		};*/
+
+		return l;
+	}
 
 	@PostMapping("/book")
 	void add(Book book) {

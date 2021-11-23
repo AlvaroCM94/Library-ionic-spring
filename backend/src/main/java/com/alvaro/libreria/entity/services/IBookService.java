@@ -11,4 +11,5 @@ public interface IBookService {
 	void add(Book libro);
 	void update(int id, Book libro);
 	void delete(int id);
+	Book findByName(String name);
 }

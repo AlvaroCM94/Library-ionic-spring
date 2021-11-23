@@ -75,4 +75,6 @@ public class UserController {
 		System.out.println(id);
 		userService.delete(id);
 	}
+	
+	
 }

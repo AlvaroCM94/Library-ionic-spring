@@ -15,9 +15,14 @@ public class IUserServiceImpl implements IUserService{
 	private UserDAO userDAO;
 
 	@Override
-	public Optional<User> getOne(int id) {
+	public Optional<User> getOne(int id){
 		return userDAO.findById(id);
 	}
+	
+	/*@Override
+	public Optional<User> getOneByName(String name){
+		return userDAO.findById(name);
+	}*/
 
 	@Override
 	public List<User> getAll() {
