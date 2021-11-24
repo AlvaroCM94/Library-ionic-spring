@@ -125,7 +125,7 @@
                                     <input type="text" class="form-control" id="fkA" name="fkA" value="{{ book.fk_author }}" #fkA required>
                                   </div>
                   
-                                  <button class="btn btn-warning" (click)="kk(book, nameA.value, authorA.value, genreA.value, 
+                                  <button class="btn btn-warning" (click)="updateLibro(book, nameA.value, authorA.value, genreA.value, 
                                     synopsisA.value, stockA.value, imageA.value, fkA.value, $event)">Actualizar</button>
                   
                                 </form>

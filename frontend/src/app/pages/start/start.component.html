@@ -41,7 +41,7 @@
     
     
     <select (change)="pageSizeChangePageSize($event)">
-      <option *ngFor="let size of pageSizes" value="size">
+      <option *ngFor="let size of pageSizes" value="{{ size }}">
         {{ size }}
       </option>
     </select>

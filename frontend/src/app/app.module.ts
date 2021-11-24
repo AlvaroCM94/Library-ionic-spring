@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -34,16 +35,17 @@ import { SearchComponent } from './pages/search/search.component';
     BrowserModule,
     CommonModule,
     IonicModule.forRoot(),
+    //IonicStorageModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
     
   ],
-  providers: [{ 
-    provide: RouteReuseStrategy,
-    useClass: IonicRouteStrategy,
-    //EncrDecrService
-  }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    EncrDecrService,
+    NativeStorage
+  ],
   bootstrap: [
     AppComponent
   ],

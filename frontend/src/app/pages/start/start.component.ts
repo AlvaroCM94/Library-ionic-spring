@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 
@@ -11,19 +12,18 @@ export class StartComponent implements OnInit {
 
   //page = 1;
   //count = 0;
-  pageSize = 1;
+  pageSize = 3;
   pageSizes = [3, 4, 5, 6, 10];
 
   public books: Array<Book> = [];
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private nativeStorage: NativeStorage) {}
 
   ngOnInit(){
-    const pageSize = JSON.stringify(3);
-    localStorage.setItem('itemPerPage', pageSize);
+    // const pageSize = JSON.stringify(3);
+    // localStorage.setItem('itemPerPage', pageSize);
 
     this.loadInfo();
-    //this.retrieve();
   }
 
   loadInfo(){
@@ -35,8 +35,43 @@ export class StartComponent implements OnInit {
   pageSizeChangePageSize(e){
     //let pageSize = JSON.stringify(e);
     //localStorage.setItem('itemPerPage', pageSize);
-    this.pageSize = Number(e);
+
+    // this.nativeStorage.setItem('quantity', {property: e}).then(
+    //   () => console.log('Stored quantity!'), 
+    //   error => console.error('Error storing quantity', error)
+    // );
+
+    this.pageSize = e.target.value;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   /*retrieve(){
     const params = this.getRequestParams(this.page, this.pageSize);
