@@ -3,3 +3,21 @@ textarea {
     outline: none;
     resize: none;
 }
+
+.name{
+    color: #d07100;
+    font-weight: bold;
+}
+
+.author{
+    font-weight: bold;
+}
+
+.synopsis{
+    font-size: 15px;
+}
+
+.form-check-input:checked {
+    background-color: #592B02;
+    border-color: #592B02;
+}

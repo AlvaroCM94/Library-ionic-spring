@@ -59,17 +59,16 @@
 
     <h2 style="text-align: center;" *ngIf="books == 0 || books == null">Libro no encontrado</h2>
 
-    <div class="row" *ngIf="book.stock > 0" style="border-block-start: double;">
+    <div class="row" *ngIf="book.stock > 0">
 
       <div class="col-4">
           <img src="assets/images/libroPH.jpg" alt="" width="120" height="150">
       </div>
 
       <div class="col-8">
-          <p style="margin-bottom: 0%;">Titulo: {{ book.name }}</p>
-          <p style="margin-bottom: 0%;">Autor: {{ book.author }}</p>
-          <!-- <p>{{ book.synopsis }}</p> -->
-          <textarea rows="3" readonly>{{ book.synopsis }}</textarea> 
+        <p class="name" style="margin-bottom: 0%;">{{ book.name }}</p>
+        <p class="author" style="margin-bottom: 0%;">{{ book.author }}</p>
+        <textarea class="synopsis" rows="3" readonly>{{ book.synopsis }}</textarea> 
       </div>
       
     </div>

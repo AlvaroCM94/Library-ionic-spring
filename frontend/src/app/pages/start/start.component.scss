@@ -4,8 +4,31 @@
     margin-bottom: 5px;
 }
 
+button{
+    background-color: #8c8781;
+    margin-right: 10px;
+}
+
 textarea {
     border: none;
     outline: none;
     resize: none;
+}
+
+.row{
+    //border-block-start: ;
+    border-block-start-color: #8c8781;
+}
+
+.name{
+    color: #d07100;
+    font-weight: bold;
+}
+
+.author{
+    font-weight: bold;
+}
+
+.synopsis{
+    font-size: 15px;
 }
