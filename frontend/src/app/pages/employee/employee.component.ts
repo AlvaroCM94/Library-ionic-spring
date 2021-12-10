@@ -18,6 +18,9 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     //console.log("hola holita")
     this.loadInfo();
+    if(localStorage.getItem('rol') != 'EMPLOYEE'){
+      window.location.assign('/');
+    }
   }
 
   loadInfo() {

@@ -2,6 +2,8 @@ package com.alvaro.libreria.controller;
 
 import java.util.List;
 import java.util.Optional;
+//import java.util.Date;
+//import java.util.stream.Collectors;
 
 import com.alvaro.libreria.entity.models.User;
 import com.alvaro.libreria.entity.services.IUserService;
@@ -15,10 +17,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javassist.NotFoundException;
+ 
+//import io.jsonwebtoken.Jwts;
+//import io.jsonwebtoken.SignatureAlgorithm;
 
 @CrossOrigin(origins = "http://localhost:8100")
 @RestController
@@ -34,13 +42,30 @@ public class UserController {
 
 	@GetMapping("/user/{id}")
 	User getOne(@PathVariable("id") int id) {
-		Optional<User> l = userService.getOne(id);
+		Optional<User> u = userService.getOne(id);
 
-		if(l.isPresent()) {
-			return l.get();
+		if(u.isPresent()) {
+			return u.get();
 		};
 
 		return null;
+	}
+	
+	//@GetMapping({"/book/byemail/{email}" , "/book/bypassword/{password}"})
+	@GetMapping("/user/byemail/{email}")
+	
+	User findByEmail(@PathVariable("email") String email) throws NotFoundException {
+		System.out.println(email);
+		User u = userService.findByEmail(email);
+
+		return u;
+	}
+	
+	@GetMapping("/user/bypassword/{password}")
+	User findByPassword(@PathVariable("password") String password) throws NotFoundException {
+		User u = userService.findByPassword(password);
+
+		return u;
 	}
 
 	@PostMapping("/user")
@@ -75,6 +100,27 @@ public class UserController {
 		System.out.println(id);
 		userService.delete(id);
 	}
+	
+	/*private String getJWTToken(String name) {
+		String secretKey = "mySecretKey";
+		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+				.commaSeparatedStringToAuthorityList("ROLE_USER");
+		
+		String token = Jwts
+				.builder()
+				.setId("softtekJWT")
+				.setSubject(name)
+				.claim("authorities",
+						grantedAuthorities.stream()
+								.map(GrantedAuthority::getAuthority)
+								.collect(Collectors.toList()))
+				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + 600000))
+				.signWith(SignatureAlgorithm.HS512,
+						secretKey.getBytes()).compact();
+
+		return "Bearer " + token;
+	}*/
 	
 	
 }

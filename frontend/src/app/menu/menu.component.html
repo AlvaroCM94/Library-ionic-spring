@@ -35,24 +35,24 @@
           <a class="nav-link" routerLink="/Search"><img src="assets/icon/search.png" height="25px" width="25px" alt="search icon"></a>
         </li> -->
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="logeado != 'true'">
           <a class="nav-link" routerLink="/Login">Login</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="rol == 'CUSTOMER'">
           <a class="nav-link" routerLink="/User">Perfil</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="rol == 'EMPLOYEE'">
           <a class="nav-link" routerLink="/Employee">Empleado</a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="rol == 'ADMIN'">
           <a class="nav-link" routerLink="/Admin">Administrador</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Logout">Salir</a>
+        <li class="nav-item" *ngIf="logeado == 'true'">
+          <a class="nav-link" (click)="logout()">Salir</a>
         </li>
         
       </ul>

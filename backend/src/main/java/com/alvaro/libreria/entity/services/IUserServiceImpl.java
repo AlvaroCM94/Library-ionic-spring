@@ -2,10 +2,14 @@ package com.alvaro.libreria.entity.services;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alvaro.libreria.entity.models.User;
+
+import javassist.NotFoundException;
+
 import com.alvaro.libreria.entity.dao.UserDAO;
 
 @Service
@@ -19,10 +23,29 @@ public class IUserServiceImpl implements IUserService{
 		return userDAO.findById(id);
 	}
 	
-	/*@Override
-	public Optional<User> getOneByName(String name){
-		return userDAO.findById(name);
-	}*/
+	@Override
+	public User findByEmail(String email) throws NotFoundException{
+
+		User user = userDAO.findByEmail(email);
+		
+		/*if(user == null) {
+			throw new NotFoundException("Email incorrecto");
+		}
+		*/
+		return user;
+	}
+	
+	@Override
+	public User findByPassword(String password) throws NotFoundException{
+
+		User user = userDAO.findByPassword(password);
+		
+		/*if(user == null) {
+			throw new NotFoundException("Password incorrecto " + password);
+		}*/
+		
+		return user;
+	}
 
 	@Override
 	public List<User> getAll() {

@@ -12,6 +12,10 @@ const httpOptionsUsingUrlEncoded = {
     headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
 };
 
+const cred = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
+};
+
 @Injectable({
     providedIn: 'root'
 })
@@ -29,8 +33,14 @@ export class UserService {
       };
     }
 
-    getUserByName(){
-      
+    getUserByEmail(email: string): Observable<User>{
+      //console.log(this.endpoint + "/byemail/" + email);
+      return this.httpClient.get<User>(this.endpoint + "/byemail/" + encodeURI(email));
+    }
+
+    getUserByPassword(password: string): Observable<User>{
+      //console.log(this.endpoint + "/byemail/" + password);
+      return this.httpClient.get<User>(this.endpoint + "/bypassword/" + encodeURI(password));
     }
 
     createUser(user: User){
@@ -41,6 +51,7 @@ export class UserService {
       bodyEncoded.append("rol", user.rol);
 
       const body = bodyEncoded.toString();
+      console.log("body: " + body);
 
       return this.httpClient.post<User>(this.endpoint, body, httpOptionsUsingUrlEncoded);
     }

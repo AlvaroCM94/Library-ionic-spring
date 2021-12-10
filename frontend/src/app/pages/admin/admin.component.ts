@@ -9,6 +9,10 @@ export class AdminComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(localStorage.getItem('rol') != 'ADMIN'){
+      window.location.assign('/');
+    }
+  }
 
 }

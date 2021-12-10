@@ -23,8 +23,8 @@ export class SearchComponent implements OnInit {
   }
 
   findLibro(search: string, e/*, option: string*/){
-    console.log("busqueda: " + search);
-    console.log("array: " + this.books);
+    //console.log("busqueda: " + search);
+    //console.log("array: " + this.books);
     this.books = [];
     e.preventDefault();
     search.trim;

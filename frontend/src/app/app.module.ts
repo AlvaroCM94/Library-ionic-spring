@@ -17,6 +17,9 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EncrDecrService } from './services/EncrDecrService';
 import { SearchComponent } from './pages/search/search.component';
+import { UserComponent } from './pages/user/user.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { SearchComponent } from './pages/search/search.component';
     BookListComponent,
     LoginComponent,
     SearchComponent,
+    UserComponent,
+    ContactComponent,
+    AdminComponent
     // JwPaginationComponent
   ],
   entryComponents: [],
