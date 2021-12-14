@@ -31,6 +31,7 @@ public class IAuthorServiceImpl implements IAuthorService{
 
 	@Override
 	public void update(int id, Author author){
+		System.out.println(author.getName());
 		Optional<Author> c = autorDao.findById(id);
 		
 		if (c.isPresent()) {

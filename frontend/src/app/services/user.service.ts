@@ -33,6 +33,13 @@ export class UserService {
       };
     }
 
+    getUsers(): Observable<User[]>{
+      return this.httpClient.get<User[]>(this.endpoint).pipe(
+        tap(_=> console.log("User retrieved")),
+        catchError(this.handleError<User[]>("Get user", []))
+      );
+    }
+
     getUserByEmail(email: string): Observable<User>{
       //console.log(this.endpoint + "/byemail/" + email);
       return this.httpClient.get<User>(this.endpoint + "/byemail/" + encodeURI(email));

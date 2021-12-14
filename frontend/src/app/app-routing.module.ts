@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { AuthorListComponent } from './pages/employee/author-list/author-list.component';
 import { BookListComponent } from './pages/employee/book-list/book-list.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   // },
   { path: '',  component: StartComponent, pathMatch: 'full' },
   { path: 'EmpleadoAñadirLibro',  component: BookListComponent, pathMatch: 'full' },
+  { path: 'EmpleadoAñadirAutor',  component: AuthorListComponent, pathMatch: 'full' },
   { path: 'Employee',  component: EmployeeComponent/*, pathMatch: 'full' */},
   { path: 'Login',  component: LoginComponent, pathMatch: 'full' },
   { path: 'Start',  component: StartComponent, pathMatch: 'full' },

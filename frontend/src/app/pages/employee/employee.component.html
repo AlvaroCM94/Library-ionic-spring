@@ -18,17 +18,17 @@
 
       <button class="btn btn-primary" style="margin-bottom: 5px;" routerLink="/EmpleadoAñadirLibro">Añadir</button>
 
-      <div *ngFor="let book of books | paginate : { itemsPerPage: pageSize, currentPage: p}; let i = index">
+      <div *ngFor="let book of books | paginate : { itemsPerPage: pageSize, currentPage: pL}; let i = index">
 
         <div id="accordion">
 
           <div class="card">
   
             <div class="card-header d-grid gap-3" style="text-align: center;">
-              <a class="btn" data-bs-toggle="collapse" [attr.href]="'#collapse' + i"> {{ book.name }} </a>
+              <a class="btn" data-bs-toggle="collapse" [attr.href]="'#collapseL' + i"> {{ book.name }} </a>
             </div>
   
-            <div [attr.id]="'collapse' + i" class="collapse" data-bs-parent="#accordion">
+            <div [attr.id]="'collapseL' + i" class="collapse" data-bs-parent="#accordion">
               <div class="card-body" style="text-align: center;">
 
                 <div class="d-flex">
@@ -71,8 +71,8 @@
                 <div class="d-flex">
                   <div class="p-2 flex-fill">
                     <h3>Editar</h3>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#modal' + i">Update</button> 
-                      <div class="modal" [attr.id]="'modal' + i" data-bs-backdrop="false" style="margin-top: 61px;"> 
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#modalL' + i">Update</button> 
+                      <div class="modal" [attr.id]="'modalL' + i" data-bs-backdrop="false" style="margin-top: 61px;"> 
                           <div class="modal-dialog">
                             <div class="modal-content">
                         
@@ -151,7 +151,7 @@
       </div><!-- ngfor -->
 
       <div class="d-flex justify-content-center">
-        <pagination-controls previousLabel="Ant" nextLabel="Sig" (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls previousLabel="Ant" nextLabel="Sig" (pageChange)="pL = $event"></pagination-controls>
       </div>
 
     </div>
@@ -160,7 +160,86 @@
 
     <div id="autor" class="tab-pane"><br>
         
-      <button class="btn btn-primary" style="margin-right: 5px;" routerLink="/EmpleadoAñadirAuthor">Añadir</button>
+      <button class="btn btn-primary" style="margin-bottom: 5px;" routerLink="/EmpleadoAñadirAutor">Añadir</button>
+
+      <div *ngFor="let author of authors | paginate : { itemsPerPage: pageSize, currentPage: pA}; let i = index">
+
+        <div id="accordion">
+
+          <div class="card">
+  
+            <div class="card-header d-grid gap-3" style="text-align: center;">
+              <a class="btn" data-bs-toggle="collapse" [attr.href]="'#collapseA' + i"> {{ author.name }} </a>
+            </div>
+  
+            <div [attr.id]="'collapseA' + i" class="collapse" data-bs-parent="#accordion">
+              <div class="card-body" style="text-align: center;">
+
+                <div class="d-flex">
+                  <div class="p-2 flex-fill">
+                    <h3>Nombre</h3>
+                    <p>{{ author.name }}</p>
+                  </div>
+                </div>
+
+                <div class="d-flex">
+                  <div class="p-2 flex-fill">
+                    <h3>Libros a la venta</h3>
+                    <p>placeholder</p>
+                  </div>
+                </div>
+
+                <div class="d-flex">
+
+                  <div class="p-2 flex-fill">
+                    <h3>Editar</h3>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" [attr.data-bs-target]="'#modalA' + i">Update</button> 
+                      <div class="modal" [attr.id]="'modalA' + i" data-bs-backdrop="false" style="margin-top: 61px;"> 
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                        
+                            <div class="modal-header">
+                              <h4 class="modal-title">Actualizar autor</h4>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                            </div>
+                        
+                            <div class="modal-body">
+                              <form>
+                                  
+                                <div class="form-group">
+                                  <label for="nameA">Nombre:</label>
+                                  <input type="text" class="form-control" id="nameA" name="nameA" value="{{ author.name }}" #nameA required>
+                                </div>
+                  
+                                <button class="btn btn-warning" (click)="updateAutor(author, nameA.value, $event)">Actualizar</button>
+                  
+                              </form>
+                            </div>
+                        
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-2 flex-fill">
+                    <h3>Borrar</h3>
+                    <img (click)="deleteAuthor(author.id)" height="25px" width="25px" src="assets/icon/delete.png" alt="delete icon">
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+  
+          </div><!-- card -->
+  
+        </div><!-- accordion -->
+
+      </div><!-- ngfor -->
+
+      <div class="d-flex justify-content-center">
+        <pagination-controls previousLabel="Ant" nextLabel="Sig" (pageChange)="pA = $event"></pagination-controls>
+      </div>
 
     </div>
 

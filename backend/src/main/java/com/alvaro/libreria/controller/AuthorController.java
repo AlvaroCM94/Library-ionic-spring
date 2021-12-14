@@ -25,16 +25,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class AuthorController{
 	
 	@Autowired
-	IAuthorService autorService;
+	IAuthorService authorService;
 
 	@GetMapping("/author")
 	List<Author> getAll(){
-		return autorService.getAll();
+		return authorService.getAll();
 	}
 
 	@GetMapping("/author/{id}")
 	Author getOne(@PathVariable("id") int id) {
-		Optional<Author> l = autorService.getOne(id);
+		Optional<Author> l = authorService.getOne(id);
 
 		if(l.isPresent()) {
 			return l.get();
@@ -44,9 +44,11 @@ public class AuthorController{
 	}
 
 	@PostMapping("/author")
-	void add(Author autor) {
-		System.out.println(autor.getName());
-		autorService.add(autor);
+	void add(Author author) {
+		System.out.println("algo de mi vida");
+		System.out.println(author);
+		System.out.println(author.getName());
+		authorService.add(author);
 	}
 
 	@PostMapping(value="/author", consumes="application/json")
@@ -54,7 +56,7 @@ public class AuthorController{
 		ObjectMapper om = new ObjectMapper();
 		try {
 			Author autor = om.readValue(autorString, Author.class);
-			autorService.add(autor);
+			authorService.add(autor);
 		} catch (JsonMappingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,15 +67,16 @@ public class AuthorController{
 	}
 	
 	@PutMapping(value = "/author/{id}")
-    void update(@PathVariable(value = "id") int id, Author autor) {
-		System.out.println(autor.getName());
-		autorService.update(id, autor);
+    void update(@PathVariable(value = "id") int id, Author author) {
+		System.out.println("id hola: " + id);
+		System.out.println("nombre: " + author.getName());
+		authorService.update(id, author);
     }
 
 	@DeleteMapping("/author/{id}")
 	void delete(@PathVariable("id") int id) {
 		System.out.println(id);
-		autorService.delete(id);
+		authorService.delete(id);
 	}
 
 }

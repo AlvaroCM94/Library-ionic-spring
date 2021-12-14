@@ -2,6 +2,7 @@ package com.alvaro.libreria.entity.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,9 @@ public class Author implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int id; 
+	
+	@Column
 	private String name;
 	
 	public Author(int id, String name){
@@ -39,7 +42,7 @@ public class Author implements Serializable{
 		return name;
 	}
 	
-	public void setNombre(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
