@@ -28,7 +28,7 @@ export class AuthorService {
         return of(result as T);
       };
     }
-    
+    ////
     getAuthors(): Observable<Author[]>{
       return this.httpClient.get<Author[]>(this.endpoint).pipe(
         tap(_=> console.log("Author retrieved")),
