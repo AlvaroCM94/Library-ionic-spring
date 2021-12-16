@@ -1,3 +1,30 @@
-<p>
-  contact works!
-</p>
+<div class="container" style="text-align: center; margin-top: 61px;">
+  <h3>Consultanos cualquier duda</h3>
+  <h4>¡Te responderemos lo antes posible!</h4><br>
+  <h5>Email de contacto:</h5>
+  <h5>libreriaAlvaro@gmail.com</h5><br><br>
+
+  <form>
+      <div class="form-group">
+          <label for="Nombre">Nombre:</label>
+          <input type="text" class="form-control" id="Nombre" name="Nombre" #Nombre required>
+          <p class="error" *ngIf="showN">Rellene este campo</p>
+      </div>
+
+      <div class="form-group">
+          <label for="Email">Email:</label>
+          <input type="email" class="form-control" id="Email" name="Email" #Email required>
+          <p class="error" *ngIf="showE">Rellene este campo</p>
+          <p class="error" *ngIf="showE2">Formato de email incorrecto</p>
+      </div>
+
+      <div class="form-group">
+          <label for="Consulta">Consulta:</label>
+          <textarea class="form-control" rows="5" id="Consulta" #Consulta required></textarea>
+          <p class="error" *ngIf="showC">Rellene este campo</p>
+      </div>
+
+      <br><button type="submit" class="btn btn-primary" (click)="mensaje(Nombre.value, Email.value, Consulta.value)">Enviar</button >
+  </form>
+
+</div>

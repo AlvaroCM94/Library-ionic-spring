@@ -15,7 +15,7 @@
       <input type="password" class="form-control" id="Password" name="Password" #Password required>
     </div>
 
-    <br><p id="error" *ngIf="show">Credenciales incorrectas</p>
+    <br><p class="error" *ngIf="show">Credenciales incorrectas</p>
 
     <div class="text-center"><br>
       <button class="btn btn-success" type="submit">Entrar</button>
@@ -43,20 +43,25 @@
             <div class="form-group">
               <label for="Nombre">Nombre:</label>
               <input type="text" class="form-control" id="Nombre" name="Nombre" #Nombre required>
+              <p class="error" *ngIf="showN">Rellene este campo</p>
             </div><br>
 
             <div class="form-group">
-              <label for="Email">Email:</label>
-              <input type="email" class="form-control" id="Email" name="Email" #Email required>
+              <label for="EmailA">Email:</label>
+              <input type="email" class="form-control" id="EmailA" name="EmailA" #EmailA required>
+              <p class="error" *ngIf="showE">Rellene este campo</p>
+              <p class="error" *ngIf="showE2">Formato de email incorrecto</p>
             </div><br>
         
             <div class="form-group">
-              <label for="Password">Contraseña:</label>
-              <input type="password" class="form-control" id="Password" name="Password" #Password required>
+              <label for="PasswordA">Contraseña:</label>
+              <input type="password" class="form-control" id="PasswordA" name="PasswordA" #PasswordA required>
+              <p class="error" *ngIf="showP">Rellene este campo</p>
+              <p class="error" *ngIf="showP2">La contraseña debe contener mínimo 7 caracteres</p>
             </div>
         
             <div class="text-center"><br>
-              <button class="btn btn-success" (click)="createUser($event, Nombre.value, Email.value, Password.value)">Crear cuenta</button>
+              <button class="btn btn-success" (click)="createUser($event, Nombre.value, EmailA.value, PasswordA.value)">Crear cuenta</button>
             </div>
 
           </form>

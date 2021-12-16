@@ -58,9 +58,24 @@ export class UserService {
       bodyEncoded.append("rol", user.rol);
 
       const body = bodyEncoded.toString();
-      console.log("body: " + body);
 
       return this.httpClient.post<User>(this.endpoint, body, httpOptionsUsingUrlEncoded);
+    }
+
+    updateUser(id: number, user: User): Observable<any>{
+      let bodyEncoded = new URLSearchParams();
+      bodyEncoded.append("name", user.name);
+      bodyEncoded.append("email", user.email);
+      bodyEncoded.append("password", user.password);
+      bodyEncoded.append("rol", user.rol);
+
+      const body = bodyEncoded.toString();
+
+      return this.httpClient.put<User>(this.endpoint + "/" + id, body, httpOptionsUsingUrlEncoded);
+    }
+
+    deleteUser(id: number): Observable<User>{
+      return this.httpClient.delete<User>(this.endpoint + "/" + id);
     }
     
   }

@@ -1,6 +1,56 @@
 <div class="container" style="margin-top: 61px;">
 
-  <button class="btn btn-primary" style="margin-bottom: 5px;" routerLink="/">Añadir</button>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAnadir" style="margin-bottom: 5px;">Añadir</button>
+    <div class="modal" id="modalAnadir" data-bs-backdrop="false" style="margin-top: 61px;"> 
+      <div class="modal-dialog">
+        <div class="modal-content">
+                        
+          <div class="modal-header">
+            <h4 class="modal-title">Añadir usuario</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+          </div>
+                        
+          <div class="modal-body">
+            <form>
+                                  
+              <div class="form-group">
+                <label for="nameAn">Nombre:</label>
+                  <input type="text" class="form-control" id="nameAn" name="nameAn" #nameAn required>
+                  <p class="error" *ngIf="showN">Rellene este campo</p>
+                </div>
+                  
+                <div class="form-group">
+                  <label for="emailAn">Email:</label>
+                    <input type="text" class="form-control" id="emailAn" name="emailAn" #emailAn required>
+                    <p class="error" *ngIf="showE">Rellene este campo</p>
+                    <p class="error" *ngIf="showE2">Formato de email incorrecto</p>
+                  </div>
+        
+                <div class="form-group">
+                  <label for="rolAn">Rol:</label>
+                  <select class="form-control" id="rolAn" name="rolAn" value="EMPLOYEE" #rolAn required>
+                    <option value="EMPLOYEE" selected="selected">Empleado</option>
+                    <option value="ADMIN">Administrador</option>
+                  </select>
+                </div>
+                  
+                <div class="form-group">
+                  <label for="passAn">Contraseña:</label>
+                  <input type="text" class="form-control" id="passAn" name="passAn" #passAn required>
+                  <p class="error" *ngIf="showP">Rellene este campo</p>
+                  <p class="error" *ngIf="showP2">La contraseña debe contener mínimo 7 caracteres</p>
+                </div>
+                  
+                <button class="btn btn-warning" (click)="createUser(nameAn.value, emailAn.value, rolAn.value, passAn.value, $event)">Añadir</button>
+              
+              </form>
+            </div>
+                        
+          </div>
+        </div>
+      </div>
+
+  <!--****************************************************************************************************************************-->
 
   <ul class="nav nav-tabs" style="justify-content: center;">
 
@@ -20,7 +70,7 @@
 
       <div *ngFor="let user of users | paginate : { itemsPerPage: pageSize, currentPage: pE}; let i = index" >
 
-        <div id="accordion" class="users[i].rol">
+        <div id="accordion" *ngIf="users[i].rol=='EMPLOYEE'">
 
         <div class="card">
   
@@ -62,7 +112,7 @@
                             <div class="modal-content">
                         
                               <div class="modal-header">
-                                <h4 class="modal-title">Actualizar libro</h4>
+                                <h4 class="modal-title">Actualizar Empleado</h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
                               </div>
                         
@@ -72,23 +122,29 @@
                                   <div class="form-group">
                                     <label for="nameA">Nombre:</label>
                                     <input type="text" class="form-control" id="nameA" name="nameA" value="{{ user.name }}" #nameA required>
+                                    <p class="error" *ngIf="showN">Rellene este campo</p>
                                   </div>
                   
                                   <div class="form-group">
                                     <label for="emailA">Email:</label>
                                     <input type="text" class="form-control" id="emailA" name="emailA" value="{{ user.email }}" #emailA required>
+                                    <p class="error" *ngIf="showE">Rellene este campo</p>
+                                    <p class="error" *ngIf="showE2">Formato de email incorrecto</p>
                                   </div>
         
                                   <div class="form-group">
                                     <label for="rolA">Rol:</label>
-                                    <select class="form-control" id="rolA" name="rolA" value="{{ user.rol }}" #rolA required>
+                                    <select class="form-control" id="rolA" name="rolA" value="EMPLOYEE" #rolA required>
+                                      <option value="EMPLOYEE" selected="selected">Empleado</option>
                                       <option value="ADMIN">Administrador</option>
                                     </select>
                                   </div>
                   
                                   <div class="form-group">
                                     <label for="passA">Contraseña:</label>
-                                    <textarea class="form-control" rows="3" id="passA" name="passA" value="{{ user.passA }}" #passA required></textarea>
+                                    <input type="text" class="form-control" id="passA" name="passA" value="{{ user.password }}" #passA required>
+                                    <p class="error" *ngIf="showP">Rellene este campo</p>
+                                    <p class="error" *ngIf="showP2">La contraseña debe contener mínimo 7 caracteres</p>
                                   </div>
                   
                                   <button class="btn btn-warning" (click)="updateUser(user, nameA.value, emailA.value, rolA.value, 
@@ -130,7 +186,7 @@
 
         <div id="accordion">
 
-          <div class="card" *ngIf="user.rol == ADMIN">
+          <div class="card" *ngIf="users[i].rol=='ADMIN'">
   
             <div class="card-header d-grid gap-3" style="text-align: center;">
               <a class="btn" data-bs-toggle="collapse" [attr.href]="'#collapseA' + i"> {{ user.name }} </a>
@@ -180,23 +236,29 @@
                                   <div class="form-group">
                                     <label for="nameA">Nombre:</label>
                                     <input type="text" class="form-control" id="nameA" name="nameA" value="{{ user.name }}" #nameA required>
+                                    <p class="error" *ngIf="showN">Rellene este campo</p>
                                   </div>
                   
                                   <div class="form-group">
                                     <label for="emailA">Email:</label>
                                     <input type="text" class="form-control" id="emailA" name="emailA" value="{{ user.email }}" #emailA required>
+                                    <p class="error" *ngIf="showE">Rellene este campo</p>
+                                    <p class="error" *ngIf="showE2">Formato de email incorrecto</p>
                                   </div>
         
                                   <div class="form-group">
                                     <label for="rolA">Rol:</label>
                                     <select class="form-control" id="rolA" name="rolA" value="{{ user.rol }}" #rolA required>
-                                      <option value="EMPLOYEE">Employee</option>
+                                      <option value="EMPLOYEE">Empleado</option>
+                                      <option value="ADMIN" selected="selected">Administrador</option>
                                     </select>
                                   </div>
                   
                                   <div class="form-group">
                                     <label for="passA">Contraseña:</label>
-                                    <textarea class="form-control" rows="3" id="passA" name="passA" value="{{ user.passA }}" #passA required></textarea>
+                                    <input type="text" class="form-control" id="passA" name="passA" value="{{ user.passA }}" #passA required>
+                                    <p class="error" *ngIf="showP">Rellene este campo</p>
+                                    <p class="error" *ngIf="showP2">La contraseña debe contener mínimo 7 caracteres</p>
                                   </div>
                   
                                   <button class="btn btn-warning" (click)="updateEmployee(user, nameA.value, emailA.value, rolA.value, 

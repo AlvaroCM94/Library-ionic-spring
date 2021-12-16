@@ -1,44 +1,5 @@
-<!-- <div class="container">
-  <div class="boton">
-
-    
-    
-    <select (change)="handlePageSizeChange($event)">
-      <option *ngFor="let size of pageSizes" value="size">
-        {{ size }}
-      </option>
-    </select>
-
-    <button type="button" class="btn btn-light" routerLink="/Search" >Buscar</button>
-
-  </div>
-
-  <div *ngFor="let book of books | paginate : { itemsPerPage: pageSize, currentPage: page, totalItems: count }; let i = index">
-    <div class="row" *ngIf="book.stock > 0" style="border-block-start: double;">
-
-      <div class="col-4">
-          <img src="assets/images/libroPH.jpg" alt="" width="120" height="150">
-      </div>
-
-      <div class="col-8">
-          <p style="margin-bottom: 0%;">Titulo: {{ book.name }}</p>
-          <p style="margin-bottom: 0%;">Autor: {{ book.author }}</p>
-          <textarea rows="3" readonly>{{ book.synopsis }}</textarea> 
-      </div>
-      
-    </div>
-  </div>
-
-  <div style="text-align: center;">
-    <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true" (pageChange)="handlePageChange($event)" ></pagination-controls>
-  </div>
-
-</div> -->
-
 <div class="container">
   <div class="boton">
-
-    <!-- <button type="button" class="btn" routerLink="/Search" >Buscar</button> -->
 
     <select (change)="pageSizeChangePageSize($event)">
       <option *ngFor="let size of pageSizes" value="{{ size }}">
@@ -56,9 +17,20 @@
       </div>
 
       <div class="col-8">
-          <p class="name" style="margin-bottom: 0%;">{{ book.name }}</p>
-          <p class="author" style="margin-bottom: 0%;">{{ book.author }}</p>
-          <textarea class="synopsis" rows="3" readonly>{{ book.synopsis }}</textarea> 
+        <div class="d-flex">
+          <div class="p-2 flex-fill">
+            <p class="name" style="margin-bottom: 0%;">{{ book.name }}</p>
+            <p class="author" style="margin-bottom: 0%;">{{ book.author }}</p>
+          </div>
+          <div class="p-2 flex-fill" *ngIf="rol == CUSTOMER">
+            <button class="btn btn-primary" style="margin-bottom: 5px;" (click)="compra()">Comprar</button>
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="p-2 flex-fill">
+            <textarea class="synopsis" rows="3" readonly>{{ book.synopsis }}</textarea> 
+          </div>
+        </div>
       </div>
       
     </div>

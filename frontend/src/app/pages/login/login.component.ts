@@ -12,6 +12,11 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit{
 
   public show:boolean = false;
+  public showN:boolean = false;
+  public showE:boolean = false;
+  public showE2:boolean = false;
+  public showP:boolean = false;
+  public showP2:boolean = false;
 
   public user : User;
   public userEmail : User;
@@ -80,15 +85,50 @@ export class LoginComponent implements OnInit{
   createUser(e, Nombre: string, Email: string, Password: string){
     //Encriptar contraseña
     e.preventDefault();
-    const newUser: User = {
-      id: 0,
-      name: Nombre,
-      email: Email,
-      password: Password,
-      rol: "CUSTOMER"
+    if(this.comprobarCampos(Nombre, Email, Password) == true){
+      const newUser: User = {
+        id: 0,
+        name: Nombre,
+        email: Email,
+        password: Password,
+        rol: "CUSTOMER"
+      }
+      console.log("user: " + newUser);
+      this.userService.createUser(newUser).subscribe(() => {});
     }
-    console.log("user: " + newUser);
-    this.userService.createUser(newUser).subscribe(() => {});
+    
+  }
+
+  comprobarCampos(nombre: string, email: string, password: string){
+    if(nombre == null || nombre == ""){
+      this.showN = true;
+    }
+    
+    if(email == null || email == ""){
+      this.showE = true;
+    }
+
+    if(email != null || email != ""){
+      if(email.indexOf("@") == -1){
+        this.showE2 = true;
+      }else if(email.indexOf(".") == -1){
+        this.showE2 = true
+      }
+    }
+
+    if(password == null || password == ""){
+      this.showP = true;
+    }
+
+    if(password.length < 7){
+      this.showP2 = true;
+    }
+    
+    if(this.showN == false && this.showE == false && this.showE2 == false && this.showP == false && this.showP2 == false){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }

@@ -20,9 +20,9 @@ export class MenuComponent implements OnInit {
       this.rol = localStorage.getItem("rol");
       this.logeado = localStorage.getItem("logeado");
 
-      console.log("name" + localStorage.getItem("name"));
-      console.log("rol" + localStorage.getItem("rol"));
-      console.log("logeado" + localStorage.getItem("logeado"));
+      // console.log("name" + localStorage.getItem("name"));
+      // console.log("rol" + localStorage.getItem("rol"));
+      // console.log("logeado" + localStorage.getItem("logeado"));
     }
     
   }

@@ -15,6 +15,8 @@ export class StartComponent implements OnInit {
   pageSize = 3;
   pageSizes = [3, 4, 5, 6, 10];
 
+  public rol: string;
+
   public books: Array<Book> = [];
 
   constructor(private bookService: BookService, private nativeStorage: NativeStorage) {}
@@ -22,7 +24,7 @@ export class StartComponent implements OnInit {
   ngOnInit(){
     // const pageSize = JSON.stringify(3);
     // localStorage.setItem('itemPerPage', pageSize);
-
+    this.rol = localStorage.getItem("rol");
     this.loadInfo();
   }
 
