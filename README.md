@@ -90,7 +90,6 @@ Use the docs in the docs directory in this project.
 ## Acknowledgments
 
 * https://remotestack.io/ionic-http-requests-with-httpclient-get-post-put-delete-tutorial/. Ionic 5 Http Requests with HttpClient (GET, POST, PUT, Delete) Tutorial.
-* https://www.bezkoder.com/node-js-express-sequelize-mysql/. Node.js Rest APIs example with Express, Sequelize & MySQL.
 * https://www.techiediaries.com/ionic-ui-forms-theming/. Excellent tutorial to create login/register UI in Ionic 5.
 * https://gist.github.com/PurpleBooth/109311bb0361f32d87a2. A very complete template for README.md files.
 * https://www.theserverside.com/video/Follow-these-git-commit-message-guidelines. Guidelines to write properly git commit messages.
